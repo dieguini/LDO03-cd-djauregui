@@ -1,9 +1,3 @@
-variable "ec2_name" {
-  description = "Name of EC2 instance to be applied"
-  type        = string
-  default     = ""
-}
-
 # Tagging system
 variable "tags" {
   description = "Map of mass assign tags to all resources"
@@ -15,3 +9,17 @@ variable "resource_specific_tags" {
 
   default = {}
 }
+
+# VPC
+variable "subnet_id" {
+  description = "Id of subnet to connect to"
+  type        = string
+}
+variable "vpc_security_group_ids" {
+  description = "Id of VPC security group"
+  type        = string
+}
+/* variable "aws_network_interface_id" {
+  description = "Id of network interface"
+  type        = string
+} */

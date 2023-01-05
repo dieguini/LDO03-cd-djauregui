@@ -32,11 +32,23 @@ data "aws_ami" "amazon_linux" {
 
 # Aws Instance
 resource "aws_instance" "this" {
-  ami           = data.aws_ami.amazon_linux.id
-  instance_type = "t2.micro"
+  ami               = data.aws_ami.amazon_linux.id
+  instance_type     = "t2.micro"
+  availability_zone = "us-east-1a"
+
+  subnet_id                   = var.subnet_id
+  vpc_security_group_ids      = [var.vpc_security_group_ids]
+  associate_public_ip_address = true
 
   tags = merge(
     var.tags,
     lookup(var.resource_specific_tags, "ec2_amazon_linux", {})
   )
 }
+
+# Aws Instance -> VPC
+/* resource "aws_network_interface_attachment" "test" {
+  instance_id          = aws_instance.this.id
+  network_interface_id = var.aws_network_interface_id
+  device_index         = 1 # New Device
+} */
