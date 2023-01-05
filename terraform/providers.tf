@@ -1,3 +1,4 @@
 provider "aws" {
-  region = var.context_vars.aws_region
+  profile = var.context_vars.profile
+  region  = var.context_vars.aws_region
 }
