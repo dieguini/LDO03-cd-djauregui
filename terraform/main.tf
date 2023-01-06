@@ -38,6 +38,7 @@ module "ec2_amazon_linux" {
   # Variables
   subnet_id              = module.vpc.aws_subnet_public_id
   vpc_security_group_ids = module.vpc.aws_security_group_web_sg_id
+  aws_key_pair_name      = module.key_pair.aws_key_pair_key_name
 
   # Tagging system
   tags                   = var.tags

@@ -19,7 +19,9 @@ variable "vpc_security_group_ids" {
   description = "Id of VPC security group"
   type        = string
 }
-/* variable "aws_network_interface_id" {
-  description = "Id of network interface"
+
+# Key Pair
+variable "aws_key_pair_name" {
+  description = "Key pair name"
   type        = string
-} */
+}

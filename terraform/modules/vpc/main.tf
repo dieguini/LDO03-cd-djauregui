@@ -2,9 +2,6 @@
 resource "aws_vpc" "this" {
   cidr_block = "172.16.0.0/16"
 
-  /* tags = {
-    Name = "tf-example"
-  } */
   tags = merge(
     var.tags,
     lookup(var.resource_specific_tags, "vpc", {})
@@ -18,9 +15,6 @@ resource "aws_subnet" "public" {
   cidr_block        = "172.16.10.0/24"
   availability_zone = "us-east-1a"
 
-  /* tags = {
-    Name = "tf-example"
-  } */
   tags = merge(
     var.tags,
     lookup(var.resource_specific_tags, "vpc", {})
@@ -30,12 +24,9 @@ resource "aws_subnet" "public" {
 ## Private
 resource "aws_subnet" "private" {
   vpc_id            = aws_vpc.this.id
-  cidr_block        = "172.16.11.0/24"
+  cidr_block        = "172.16.20.0/24"
   availability_zone = "us-east-1b"
 
-  /* tags = {
-    Name = "tf-example"
-  } */
   tags = merge(
     var.tags,
     lookup(var.resource_specific_tags, "vpc", {})
@@ -61,14 +52,6 @@ resource "aws_route_table" "public_rt" {
     gateway_id = aws_internet_gateway.ig.id
   }
 
-  route {
-    ipv6_cidr_block = "::/0"
-    gateway_id      = aws_internet_gateway.ig.id
-  }
-
-  /* tags = {
-    Name = "Public Route Table"
-  } */
   tags = merge(
     var.tags,
     lookup(var.resource_specific_tags, "vpc", {})
@@ -107,14 +90,3 @@ resource "aws_security_group" "web_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-# Network Interface
-/* resource "aws_network_interface" "this" {
-  subnet_id   = aws_subnet.this.id
-  private_ips = ["172.16.10.100"]
-
-  tags = merge(
-    var.tags,
-    lookup(var.resource_specific_tags, "vpc", {})
-  )
-} */
