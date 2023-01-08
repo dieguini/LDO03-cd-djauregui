@@ -1,7 +1,6 @@
 # Context
 context_vars = {
   "aws_region" = "us-east-1"
-  "profile"    = "default"
 }
 
 # EC2 Variables
