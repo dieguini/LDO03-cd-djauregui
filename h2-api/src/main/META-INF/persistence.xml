@@ -1,0 +1,9 @@
+<persistence-unit name="myPU" transaction-type="RESOURCE_LOCAL">
+  <jta-data-source>jdbc/MyDS</jta-data-source>
+  <properties>
+    <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
+    <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+    <property name="javax.persistence.jdbc.user" value="h2"/>
+    <property name="javax.persistence.jdbc.password" value="h2"/>
+  </properties>
+</persistence-unit>
