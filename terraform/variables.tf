@@ -5,10 +5,6 @@ variable "context_vars" {
 }
 
 # EC2 Variables
-/* variable "ec2_variables" {
-  description = "EC2 variables"
-  type        = map(string)
-} */
 
 # KMS
 variable "kms" {
