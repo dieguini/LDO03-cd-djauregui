@@ -1,4 +1,4 @@
-/* package com.h2.h2api.controladores;
+package com.h2.h2api.controladores;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -57,4 +57,3 @@ public class ControladorUsuario {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
   }
 }
- */

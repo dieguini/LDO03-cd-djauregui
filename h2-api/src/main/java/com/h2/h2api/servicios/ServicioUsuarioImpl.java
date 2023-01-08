@@ -1,4 +1,4 @@
-/* package com.h2.h2api.servicios;
+package com.h2.h2api.servicios;
 
 import java.util.Optional;
 
@@ -45,4 +45,3 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
   }
   
 }
- */
