@@ -1,3 +1,3 @@
 provider "aws" {
-  region  = var.context_vars.aws_region
+  region = var.context_vars.aws_region
 }

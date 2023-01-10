@@ -32,7 +32,7 @@ module "key_pair" {
   resource_specific_tags = var.resource_specific_tags
 }
 
-module "ec2_amazon_linux" {
+/* module "ec2_amazon_linux" {
   source = "./modules/ec2"
 
   # Variables
@@ -47,4 +47,17 @@ module "ec2_amazon_linux" {
   depends_on = [
     module.vpc, module.key_pair
   ]
+} */
+
+module "ec2_jenkins_amazon_linux" {
+  source = "./modules/ec2_jenkins"
+
+  # Variables
+  vpc_id            = module.vpc.aws_vpc_id
+  subnet_id         = module.vpc.aws_subnet_public_id
+  aws_key_pair_name = module.key_pair.aws_key_pair_key_name
+
+  # Tagging system
+  tags                   = var.tags
+  resource_specific_tags = var.resource_specific_tags
 }

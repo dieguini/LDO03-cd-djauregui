@@ -17,7 +17,10 @@ resource "aws_subnet" "public" {
 
   tags = merge(
     var.tags,
-    lookup(var.resource_specific_tags, "vpc", {})
+    lookup(var.resource_specific_tags, "vpc", {}),
+    {
+      ExtraInformation = "public_subnet"
+    }
   )
 }
 
@@ -29,7 +32,10 @@ resource "aws_subnet" "private" {
 
   tags = merge(
     var.tags,
-    lookup(var.resource_specific_tags, "vpc", {})
+    lookup(var.resource_specific_tags, "vpc", {}),
+    {
+      ExtraInformation = "private_subnet"
+    }
   )
 }
 
@@ -68,6 +74,14 @@ resource "aws_route_table_association" "public_1_rt_a" {
 resource "aws_security_group" "web_sg" {
   name   = "HTTP & SSH"
   vpc_id = aws_vpc.this.id
+
+  ingress {
+    description = "Allow from Personal CIDR block"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   ingress {
     from_port   = 80

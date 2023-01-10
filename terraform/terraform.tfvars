@@ -24,4 +24,7 @@ resource_specific_tags = {
   "vpc" = {
     "Name" = "vpc-cd-djauregui"
   }
+  "ec2_jenkins" = {
+    "Name" = "ec2-cd-jenkins-djauregui"
+  }
 }
