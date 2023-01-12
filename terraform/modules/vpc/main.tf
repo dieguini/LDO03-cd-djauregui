@@ -71,7 +71,7 @@ resource "aws_route_table_association" "public_1_rt_a" {
 }
 
 # Security Group
-resource "aws_security_group" "web_sg" {
+/* resource "aws_security_group" "web_sg" {
   name   = "HTTP & SSH"
   vpc_id = aws_vpc.this.id
 
@@ -79,6 +79,14 @@ resource "aws_security_group" "web_sg" {
     description = "Allow from Personal CIDR block"
     from_port   = 8080
     to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Allow WeebHook"
+    from_port   = 9000
+    to_port     = 9000
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -103,4 +111,4 @@ resource "aws_security_group" "web_sg" {
     protocol    = -1
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
+} */

@@ -10,6 +10,6 @@ output "aws_subnet_private_id" {
   value = aws_subnet.private.id
 }
 
-output "aws_security_group_web_sg_id" {
+/* output "aws_security_group_web_sg_id" {
   value = aws_security_group.web_sg.id
-}
+} */
